@@ -2,7 +2,7 @@
 
 # Spritenator
 
-Spritenator is a micro lib that lets you turn regular img element into Spritenators.
+Spritenator is a micro lib that turns simple img element into sprite-sheet animations.
 
 No dependencies, no jQuery, just plug and play! (pun intended)
 
