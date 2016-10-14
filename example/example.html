@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Spritenator Examples</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="icon.png"/>
+
+        <!-- some styling -->
+        <style>
+            /* crispy image rendering */
+            img, div {
+                -ms-interpolation-mode: nearest-neighbor !important;
+                image-rendering: -webkit-optimize-contrast !important;
+                image-rendering: -webkit-crisp-edges !important;
+                image-rendering: -moz-crisp-edges !important;
+                image-rendering: -o-crisp-edges !important;
+                image-rendering: pixelated !important;
+            }
+
+            /* a Spritenator example div */
+            .sprite-example {
+                width: 140px;
+                height:140px;
+            }
+
+            /* top text style */
+            .example-header {
+                min-height: 100px;
+                margin-top: 80px;
+            }
+
+            /* link colors */
+            a, a:link, a:visited {
+                color: #ffeb3b;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #ff9800;
+                text-decoration: none;
+            }
+            a:active {
+                color: #ffeb3b;
+                text-decoration: none;
+            }
+
+            /* page background and font color */
+            body {
+                background: #286090;
+                color: white;
+            }
+
+            /* titles */
+            h2, h3 {
+                color: #ffeb3b;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row" style="display: none;">
+
+                <div style="text-align:center">
+                    <h1>Spritenator Examples</h1>
+                    <p>The following are few examples of using Spritenator.<br />
+                        For more info, <a target="_blank" href="https://github.com/RonenNess/spritenator/">click here</a>.</p>
+                    <p>Graphics credits:
+                        <a href="http://opengameart.org/content/animated-warrior" target="_blank">Warrior Sprite</a>,
+                        <a href="http://opengameart.org/content/pixel-explosion-12-frames" target="_blank">Explosion</a>.
+                    </p>
+                </div>
+                <hr />
+
+                <!-- endless loop sprite example -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Idle loop</h3>
+                        <p>Here's a simple 'Idle' animation, in an endless loop.</p>
+                    </div>
+                    <div id="sprite1" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+
+                <!-- switching animations -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Switching animations</h3>
+                        <p>Switching animations is so easy! Just hit the 'Hop' / 'Idle' buttons to see.</p>
+                    </div>
+                    <div id="sprite2" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                    <button onclick="playHop();" type="button" class="btn btn-warning reset-btn">Hop</button>
+                    <button onclick="playIdle();" type="button" class="btn btn-warning reset-btn">Idle</button>
+                </div>
+
+                <!-- animation with 'next' -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Animation with 'next'</h3>
+                        <p>Animations 'next' property will play another animation when done (in this case, we use it to return to 'idle'). Click on 'Taunt' to see.</p>
+                    </div>
+                    <div id="sprite3" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                    <button onclick="playTaunt();" type="button" class="btn btn-warning reset-btn">Taunt</button>
+                </div>
+
+                <!-- single animation (no loop) -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Single animation</h3>
+                        <p>Some animations only need to play once and stop.</p>
+                    </div>
+                    <div id="sprite4" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+
+                <!-- custom delay -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Step Delays</h3>
+                        <p>You can add delay to specific steps of the animation, to emphasize them.</p>
+                    </div>
+                    <div id="sprite5" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+
+                <!-- custom speed -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Sprite Speed</h3>
+                        <p>You can set the speed of a single sprite to make it animate slower or faster. In this case, x3 times faster!</p>
+                    </div>
+                    <div id="sprite6" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+
+                <!-- function 'next' -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Functions as 'next'</h3>
+                        <p>Did you know that 'next' can also be a function? Every time 'Idle' ends we'll random an animation and when done return to 'Idle'.</p>
+                    </div>
+                    <div id="sprite7" class="sprite-example"><img src="sprite.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+
+                <!-- animation with delay before loop -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>End Delay</h3>
+                        <p>If you want an animation that will play in loop every constant intervals, you can add a last step delay.</p>
+                    </div>
+                    <div id="explosion1" class="sprite-example"><img src="explosion.png"></div>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+
+                <!-- animation with callbacks -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="example-header">
+                        <h3>Callbacks</h3>
+                        <p>You can attach callbacks to animation start / end.</p>
+                    </div>
+                    <div id="explosion2" class="sprite-example"><img src="explosion.png"></div>
+                    <span id="exp-started">Started: 0</span>
+                    <span id="exp-ended">Ended: 0</span>
+                    <br /><br />
+                    <button type="button" class="btn btn-warning reset-btn">Reset</button>
+                    <button type="button" class="btn btn-warning pause-btn">Pause</button>
+                </div>
+            </div>
+            <br /><br /><br />
+        </div>
+    </body>
+
+	<!-- Jquery and Bootstrap js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- include Spritenators -->
+    <script src="../dist/spritenator.js"></script>
+
+    <!-- create Spritenators -->
+    <script>
+
+        // create Spritenators
+        var spriteAnimations = {
+            "idle": Spritenator.animation({steps: [0,1,2,3,4,5,6,7,8,9], fps: 5}),
+            "taunt": Spritenator.animation({steps: [10,11,12,13,14,15,16,17,18,19], fps: 12, next: "idle"}),
+            "hop": Spritenator.animation({steps: [20,21,22,23,24,25,26,27,28,29], fps: 12}),
+            "attack": Spritenator.animation({steps: [30,31,32,33,34,35,36,37,38,39],
+                                                 delays: [1100,0,0,0,0,0,750,0,0,0,0], fps: 10}),
+            "die": Spritenator.animation({steps: [40,41,42,43,44,45,46,47,48,49], fps: 10, loop: false}),
+        };
+
+        // create explosion animations
+        var explosionAnimations = {
+            "explode": Spritenator.animation({steps: [0,1,2,3,4,5,6,7,8,9,10,11,12], fps: 10, endDelay: 2000}),
+            "explode_with_callbacks": Spritenator.animation({steps: [0,1,2,3,4,5,6,7,8,9,10,11,12], fps: 10, endDelay: 100,
+                                                                onStart: explosionStartCallback, onEnd: explosionEndCallback}),
+        }
+
+        // idle animation in loop
+        var elem = document.getElementById("sprite1");
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations);
+
+        // switching animations
+        var elem = document.getElementById("sprite2");
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations).play("hop");
+        function playHop() {
+            Spritenator.get(document.getElementById("sprite2")).play("hop");
+        }
+        function playIdle() {
+            Spritenator.get(document.getElementById("sprite2")).play("idle");
+        }
+
+        // idle animation in loop with button to taunt
+        var elem = document.getElementById("sprite3");
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations);
+        function playTaunt() {
+            Spritenator.get(document.getElementById("sprite3")).play("taunt");
+        }
+
+        // animation without a loop
+        var elem = document.getElementById("sprite4");
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations).play("die");
+
+        // animation with custom delays
+        var elem = document.getElementById("sprite5");
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations).play("attack");
+
+        // animation with custom speed
+        var elem = document.getElementById("sprite6");
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations).play("attack").speed = 3;
+
+        // functions as 'next'
+        var elem = document.getElementById("sprite7");
+        var spriteAnimations2 = JSON.parse(JSON.stringify(spriteAnimations));
+        spriteAnimations2["hop"].next = "idle";
+        spriteAnimations2["attack"].next = "idle";
+        spriteAnimations2["idle"].next = function(sprite) {
+            options = ["idle", "hop", "attack"];
+            return options[Math.floor(Math.random()*options.length)];
+        };
+        Spritenator.create(elem, {x: 10, y: 5}, spriteAnimations2);
+
+        // init explosion - single animation that's not in loop
+        var elem = document.getElementById("explosion1");
+        Spritenator.create(elem, {x: 12, y: 1}, explosionAnimations);
+
+        // init explosion2 - start / end callbacks
+        var elem = document.getElementById("explosion2");
+        Spritenator.create(elem, {x: 12, y: 1}, explosionAnimations).play("explode_with_callbacks");
+
+        // init reset buttons
+        $(".reset-btn").click(function(){
+            Spritenator.get($(this).siblings()[1]).reset();
+        });
+
+        // init pause buttons
+        $(".pause-btn").click(function(){
+            var sprite = Spritenator.get($(this).siblings()[1]);
+            sprite.paused = !sprite.paused;
+            $(this).text(sprite.paused ? "Resume" : "Pause");
+            $(this).css("background", sprite.paused ? "red" : "");
+        });
+
+        // callback for explosion start example
+        function explosionStartCallback() {
+            var elem = $("#exp-started");
+            var val = elem.text().split(' ')[1];
+            elem.text("Started: " + ++val);
+        }
+
+        // callback for explosion end example
+        function explosionEndCallback() {
+            var elem = $("#exp-ended");
+            var val = elem.text().split(' ')[1];
+            elem.text("Ended: " + ++val);
+        }
+
+        // when done show everything
+        $(".row").show();
+    </script>
+</html>

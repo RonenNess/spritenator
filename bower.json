@@ -1,0 +1,28 @@
+{
+  "name": "spritenator",
+  "version": "1.0.0",
+  "homepage": "https://ronenness.github.io/spritenator/",
+  "authors": [
+    "Ronen Ness <ronenness@gmail.com>"
+  ],
+  "description": "Smooth animations with dom elements and sprite-sheets.",
+  "keywords": [
+	"Spritenator",
+    "sprite",
+	"spritesheet",
+	"sprite sheet",
+    "animation",
+    "animate",
+    "dom",
+	"img"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "main": "dist/spritenator.js"
+}
