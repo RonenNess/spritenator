@@ -5,9 +5,9 @@
   "authors": [
     "Ronen Ness <ronenness@gmail.com>"
   ],
-  "description": "Smooth animations with dom elements and sprite-sheets.",
+  "description": "Smooth animations with dom elements and spritesheets.",
   "keywords": [
-	"Spritenator",
+	"sprite animations",
     "sprite",
 	"spritesheet",
 	"sprite sheet",

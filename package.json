@@ -1,8 +1,8 @@
 {
   "name": "spritenator",
   "version": "1.0.0",
-  "description": "Smooth animations with dom elements and sprite-sheets.",
-  "main": "dist/sprite.animation.js",
+  "description": "Smooth animations with dom elements and spritesheets.",
+  "main": "dist/spritenator.js",
   "scripts": {
     "test": ""
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/RonenNess/spritenator.git"
   },
   "keywords": [
-	"Spritenator",
+	"sprite animations",
     "sprite",
 	"spritesheet",
 	"sprite sheet",
